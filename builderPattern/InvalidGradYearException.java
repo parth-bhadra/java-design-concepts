@@ -19,4 +19,6 @@ public class InvalidGradYearException extends RuntimeException {
     public InvalidGradYearException(String message, Throwable cause, boolean enableSuppression, boolean writableStackTrace) {
         super(message, cause, enableSuppression, writableStackTrace);
     }
+
+
 }
