@@ -4,10 +4,11 @@ import java.util.ArrayList;
 import java.util.Date;
 
 public class Client {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
         // starting a new batch -> 100 students
         // create 1 enrollment at a time, and pass all the details
         // create 100 enrollments with the common data, and later on add individual attribute values
+        RegistryStudent registryStudent = new RegistryStudent();
 
         Student s = new Student(1, "Parth", 100, "Test", "LLD", "BE", new Date(2023, 7, 14), "Sandeep", new Date(2024, 7, 14), "ICICI", 60 );
 
@@ -17,6 +18,16 @@ public class Client {
             studentList.add(s.clone());
         }
 
+        Student aug23 = new Student(0,"",0,"Aug23","LLD","BE",new Date(2023, 7, 14),"Naman",new Date(2023, 7, 14),"Razorpay",70);
+        Student may23 = new Student(0,"",0,"May23","DSA","FS",new Date(2023, 7, 14),"Mohit",new Date(2023, 7, 14),"Razorpay",70);
+
+        registryStudent.addToRegistry(aug23.getBatchName(), aug23);
+        registryStudent.addToRegistry(may23.getBatchName(), may23);
+
+        Student parthAug23 = registryStudent.getFromRegistry("Aug23");
+        parthAug23.setId(1);
+        parthAug23.setName("Parth");
+        parthAug23.setPsp(99);
         // you can't write any function definition in psvm
     }
 
