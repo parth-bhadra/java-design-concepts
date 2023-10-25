@@ -1,10 +1,32 @@
 package TicTacToe.models;
 
+import java.util.Scanner;
+
 public class Player {
     private int id;
     private String name;
     private char symbol;
     private PlayerType playerType;
+
+    public Player(int id, String name, char symbol, PlayerType playerType) {
+        this.id = id;
+        this.name = name;
+        this.symbol =symbol;
+        this.playerType = playerType;
+    }
+
+    public Move makeMove(Board board) {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter the row for your move");
+        int row = sc.nextInt();
+        System.out.println("Enter the column for your move");
+        int col = sc.nextInt();
+        // TODO: validation for the move, check row and column, and cell status
+        board.getBoard().get(row).get(col).setCellState(CellState.FILLED);
+        board.getBoard().get(row).get(col).setPlayer(this);
+        return new Move(row, col, this, CellState.FILLED);
+    }
+
 
     public int getId() {
         return id;

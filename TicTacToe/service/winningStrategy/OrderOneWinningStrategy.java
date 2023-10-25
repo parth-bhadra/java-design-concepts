@@ -5,6 +5,7 @@ import TicTacToe.models.Board;
 import TicTacToe.models.Move;
 import TicTacToe.models.Player;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -22,12 +23,14 @@ public class OrderOneWinningStrategy implements WinningStrategy {
         leftDiagonalHashMap = new HashMap<>();
         rightDiagonalHashMap = new HashMap<>();
         cornerHashMap = new HashMap<>();
+        this.rowHashMaps = new ArrayList<>();
+        this.columnHashMaps = new ArrayList<>();
 
         for (int i = 0; i < dimension; i++) {
-            rowHashMaps. add(new HashMap<>());
+            this.rowHashMaps. add(new HashMap<>());
         }
         for (int j = 0; j < dimension; j++) {
-            columnHashMaps.add(new HashMap<>());
+            this.columnHashMaps.add(new HashMap<>());
         }
     }
 
@@ -78,7 +81,7 @@ public class OrderOneWinningStrategy implements WinningStrategy {
                 columnHashMaps.get(j).get(symbol) + 1
         );
 
-        if(rowHashMaps.get(j).get(symbol) == dimension) return lastPlayer;
+        if(columnHashMaps.get(j).get(symbol) == dimension) return lastPlayer;
         return null;
     }
     public Player checkLeftDiagonalWin(int i, int j, char symbol, Player lastPlayer) {
@@ -87,7 +90,7 @@ public class OrderOneWinningStrategy implements WinningStrategy {
             leftDiagonalHashMap.putIfAbsent(symbol, 0);
             leftDiagonalHashMap.put(symbol, leftDiagonalHashMap.get(symbol) + 1);
 
-            if((int)leftDiagonalHashMap.get(symbol) == dimension-1) return lastPlayer;
+            if((int)leftDiagonalHashMap.get(symbol) == dimension) return lastPlayer;
         }
         return null;
     }
@@ -96,7 +99,7 @@ public class OrderOneWinningStrategy implements WinningStrategy {
             rightDiagonalHashMap.putIfAbsent(symbol, 0);
             rightDiagonalHashMap.put(symbol, rightDiagonalHashMap.get(symbol) + 1);
 
-            if((int)rightDiagonalHashMap.get(symbol) == dimension-1) return lastPlayer;
+            if((int)rightDiagonalHashMap.get(symbol) == dimension) return lastPlayer;
         }
         return null;
     }
@@ -105,7 +108,7 @@ public class OrderOneWinningStrategy implements WinningStrategy {
             cornerHashMap.putIfAbsent(symbol, 0);
             cornerHashMap.put(symbol, cornerHashMap.get(symbol) + 1);
 
-            if((int)cornerHashMap.get(symbol) == dimension-1) return lastPlayer;
+            if((int)cornerHashMap.get(symbol) == 4) return lastPlayer;
         }
         return null;
     }

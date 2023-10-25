@@ -6,6 +6,12 @@ import java.util.List;
 public class Board {
     private int size;
     private List<List<Cell>> board;
+
+    public Board(Board board) {
+        this.board = board.board;
+        this.size = board.size;
+    }
+
     public Board(int size) {
         this.size = size;
         this.board = new ArrayList<>();
@@ -24,6 +30,7 @@ public class Board {
             for(int j=0; j<size; j++) {
                 this.board.get(i).get(j).displayCell();
             }
+            System.out.println("");
         }
     }
 

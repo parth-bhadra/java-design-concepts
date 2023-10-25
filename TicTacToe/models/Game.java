@@ -15,10 +15,25 @@ public class Game {
     private List<Player> players;
     private Player currentPlayer;
     private GameStatus gameStatus;
+    private int noOfSymbols;
+
+    public void setGameStatus(GameStatus gameStatus) {
+        this.gameStatus = gameStatus;
+    }
+
     private Player winner;
     private List<Move> moves;
+
+    public void setWinner(Player winner) {
+        this.winner = winner;
+    }
+
     private List<Board> boardStates;
     private WinningStrategy winningStrategy;
+
+    public WinningStrategy getWinningStrategy() {
+        return winningStrategy;
+    }
 
     private Game(Board currentBoard, List<Player> players, WinningStrategy winningStrategy) {
         this.currentBoard = currentBoard;
@@ -27,6 +42,35 @@ public class Game {
         this.moves = new ArrayList<Move>();
         this.boardStates = new ArrayList<Board>();
         this.winningStrategy = winningStrategy;
+        this.noOfSymbols = 0;
+    }
+
+    public void setNoOfSymbols(int noOfSymbols) {
+        this.noOfSymbols = noOfSymbols;
+    }
+
+    public int getNoOfSymbols() {
+        return noOfSymbols;
+    }
+
+    public Board getCurrentBoard() {
+        return currentBoard;
+    }
+
+    public List<Board> getBoardStates() {
+        return boardStates;
+    }
+
+    public GameStatus getGameStatus() {
+        return gameStatus;
+    }
+
+    public Player getWinner() {
+        return winner;
+    }
+
+    public List<Move> getMoves() {
+        return moves;
     }
 
     public static Builder builder () {
