@@ -2,7 +2,7 @@ package src.parkingLot.models;
 
 import java.time.LocalDateTime;
 
-public class BaseModel {
+public abstract class BaseModel {
     private String id;
     // auditing columns
     private LocalDateTime createdAt;
