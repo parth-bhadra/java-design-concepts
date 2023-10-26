@@ -11,11 +11,11 @@ public class Gate extends BaseModel {
     private GateStatus gateStatus;
     private String gateNumber;
 
-    public String getOperator() {
+    public Operator getOperator() {
         return operator;
     }
 
-    public void setOperator(String operator) {
+    public void setOperator(Operator operator) {
         this.operator = operator;
     }
 
